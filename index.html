@@ -384,20 +384,21 @@
             }
 
             grid.innerHTML = filtered.map(p => `
-                <div class="group bg-white p-4 md:p-8 border-r border-b border-zinc-200">
-                    <div class="relative aspect-[3/4] mb-4 bg-zinc-50 border border-zinc-100 cursor-pointer overflow-hidden" onclick="window.openProductModal('${p.id}')">
-                        <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <button onclick="event.stopPropagation(); window.toggleWishlist('${p.id}')" class="absolute top-2 right-2 p-2 bg-white/80 text-[#C45508] border border-zinc-100 rounded-none shadow-sm">
-                            <svg class="w-3.5 h-3.5" fill="${wishlist.includes(p.id) ? '#C45508' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                        </button>
-                    </div>
-                    <div class="space-y-1">
-                        <h3 class="text-[10px] md:text-[12px] font-black uppercase text-zinc-900 tracking-widest truncate">${p.name}</h3>
-                        <p class="text-[#C45508] text-xs font-serif italic">${p.price.toLocaleString('pt-MZ')} MT</p>
-                        <button onclick="window.openProductModal('${p.id}')" class="w-full bg-zinc-50 text-zinc-900 py-3 text-[8px] font-black uppercase tracking-widest mt-2 hover:bg-[#C45508] hover:text-white transition-all rounded-none border border-zinc-200">Ver Detalhes</button>
-                    </div>
-                </div>
-            `).join('');
+              grid.innerHTML = filtered.map(p => `
+    <div class="group bg-white p-2 md:p-8 border-r border-b border-zinc-200">
+        <div class="relative aspect-[3/4] mb-2 bg-zinc-50 border border-zinc-100 cursor-pointer overflow-hidden" onclick="window.openProductModal('${p.id}')">
+            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <button onclick="event.stopPropagation(); window.toggleWishlist('${p.id}')" class="absolute top-1 right-1 p-1.5 bg-white/80 text-[#C45508] border border-zinc-100 rounded-none shadow-sm">
+                <svg class="w-3 h-3" fill="${wishlist.includes(p.id) ? '#C45508' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </button>
+        </div>
+        <div class="space-y-0.5">
+            <h3 class="text-[8px] md:text-[12px] font-black uppercase text-zinc-900 tracking-tighter md:tracking-widest truncate">${p.name}</h3>
+            <p class="text-[#C45508] text-[9px] md:text-xs font-serif italic">${p.price.toLocaleString('pt-MZ')} MT</p>
+            <button onclick="window.openProductModal('${p.id}')" class="w-full bg-zinc-50 text-zinc-900 py-2 text-[7px] md:text-[8px] font-black uppercase tracking-tighter mt-1 hover:bg-[#C45508] hover:text-white transition-all rounded-none border border-zinc-200">Ver</button>
+        </div>
+    </div>
+`).join('');
         }
 
         document.getElementById('menu-toggle').onclick = () => {
