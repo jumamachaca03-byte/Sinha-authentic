@@ -184,7 +184,8 @@
 
     <!-- Products Grid -->
     <section id="produtos" class="py-12 md:py-20">
-<div id="product-grid" class="max-w-7xl mx-auto grid grid-cols-3 lg:grid-cols-3 gap-px bg-zinc-200 border-t border-zinc-200"></div>            <div class="text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-4 mb-10 flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0">
+            <div class="text-center md:text-left">
                 <span class="uppercase tracking-[0.3em] text-[8px] text-[#C45508] font-black mb-1 block">Acervo Sinha</span>
                 <h2 id="current-category-name" class="text-3xl md:text-5xl font-serif italic text-zinc-900 capitalize">Peças em Destaque</h2>
             </div>
@@ -205,8 +206,9 @@
     </section>
 
     <!-- Modal (Compacto: Fundo Off-White e Backdrop Claro) -->
-<div id="product-modal-container" class="fixed inset-0 z-[110] bg-white/30 backdrop-blur-md flex items-center justify-center hidden">        
-<div id="product-modal-content" class="bg-white/90 backdrop-blur-lg w-[90%] md:max-w-[55vw] lg:max-w-[35vw] ... shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/20 relative" onclick="event.stopPropagation()">            
+    <div id="product-modal-container" class="fixed inset-0 z-[110] bg-[#FAF9F6]/80 backdrop-blur-2xl flex items-center justify-center hidden">
+        <div id="product-modal-content" class="bg-[#FAF9F6] w-[80%] md:max-w-[55vw] lg:max-w-[35vw] h-auto max-h-[80vh] md:max-h-[75vh] overflow-hidden rounded-none shadow-2xl flex flex-col md:flex-row border border-zinc-200 relative" onclick="event.stopPropagation()">
+            
             <button id="product-modal-close" class="absolute top-4 right-4 z-30 p-2 bg-white/60 hover:bg-zinc-900 hover:text-white text-zinc-900 rounded-none transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
@@ -270,9 +272,7 @@
             { id: "3", name: "Blazer Estruturado Royale", category: "blusas", price: 14200.00, image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1886", tag: "Atelier", sizes: ["P", "M", "G"], colors: ["Marinho", "Preto"] },
             { id: "4", name: "Mule Minimal Noir", category: "calcados", price: 5900.00, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780", tag: "Essencial", sizes: ["36", "37", "38", "39"], colors: ["Noir"] },
             { id: "5", name: "Trench Coat Cashmere", category: "casacos", price: 21500.00, image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=1887", tag: "Exclusivo", sizes: ["M", "G"], colors: ["Preto", "Camelo"] },
-            { id: "6", name: "Clutch Couro Artesanal", category: "acessorios", price: 11000.00, image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2069", tag: "Handmade", sizes: ["Único"], colors: ["Ebony"] },
-            { id: "99", name: "Vestido Gala Red Velvet", category: "vestidos", price: 24500.00, image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800", tag: "Exclusivo", sizes: ["P", "M", "G"], colors: ["Vermelho", "Preto"] },
-            { id: "102", name: "Sapatilhas castanhas", category: "calcados", price: 19500.00, image: "https://res.cloudinary.com/dw0ultui7/image/upload/q_auto/f_auto/v1776353848/378c0423-7b36-472b-999c-699a491e9192_rcezb2.jpg", tag: "Novo", sizes: ["P", "M", "G"], colors: ["Cor da Foto"] },
+            { id: "6", name: "Clutch Couro Artesanal", category: "acessorios", price: 11000.00, image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2069", tag: "Handmade", sizes: ["Único"], colors: ["Ebony"] }
         ];
 
         let currentCategory = 'todos';
