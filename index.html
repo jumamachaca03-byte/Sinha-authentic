@@ -10,6 +10,9 @@
     <title>Sinha Authentic | Luxury Fashion</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👗</text></svg>">
     <style>
+        html {
+            scrollbar-gutter: stable;
+        }
         :root {
             --primary-color: #000000;
             --secondary-color: #FADADD;
@@ -104,6 +107,37 @@
 
         .safe-pb { padding-bottom: env(safe-area-inset-bottom); }
         .safe-pt { padding-top: env(safe-area-inset-top); }
+
+        /* Modal Animations (iOS Gallery Style) */
+        @keyframes iosOpen {
+            from { opacity: 0; transform: scale(0.82); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes iosClose {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.82); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .animate-ios-open { 
+            animation: iosOpen 0.4s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+            will-change: transform, opacity;
+            transform-origin: center;
+        }
+        .animate-ios-close { 
+            animation: iosClose 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+            will-change: transform, opacity;
+            transform-origin: center;
+        }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .animate-fade-out { animation: fadeOut 0.3s ease-in forwards; }
     </style>
 </head>
 <body class="selection:bg-[#C45508]/10 overflow-x-hidden">
@@ -284,6 +318,7 @@
 
         const grid = document.getElementById('product-grid');
         const modalContainer = document.getElementById('product-modal-container');
+        const modalContent = document.getElementById('product-modal-content');
         const menuOverlay = document.getElementById('mobile-menu');
 
         const CHECK_ICON_HTML = `<svg class="check-icon w-2 h-2 md:w-2.5 md:h-2.5 text-[#C45508]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>`;
@@ -315,13 +350,25 @@
                 </button>`).join('');
             
             modalContainer.classList.remove('hidden');
+            modalContainer.classList.add('animate-fade-in');
+            modalContent.classList.add('animate-ios-open');
+            modalContainer.classList.remove('animate-fade-out');
+            modalContent.classList.remove('animate-ios-close');
+
             document.body.style.overflow = 'hidden';
             updateModalBtn();
         };
 
         window.closeProductModal = function() {
-            modalContainer.classList.add('hidden');
-            document.body.style.overflow = '';
+            modalContainer.classList.add('animate-fade-out');
+            modalContent.classList.add('animate-ios-close');
+            modalContainer.classList.remove('animate-fade-in');
+            modalContent.classList.remove('animate-ios-open');
+
+            setTimeout(() => {
+                modalContainer.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
         };
 
         window.selectSize = function(s) { 
