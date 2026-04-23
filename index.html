@@ -7,16 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>Sinha Authentic | Luxury Fashion</title>
+    <title>SINHA AUTHENTIC</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👗</text></svg>">
     <style>
         html {
             scrollbar-gutter: stable;
         }
         :root {
-            --primary-color: #000000;
+            --primary-color: #FF2D55;
             --secondary-color: #FADADD;
-            --primary-dark: #000000;
+            --primary-dark: #D81B4B;
             --bg-main: #FAF9F6; /* Off-white luxuoso */
             --bg-surface: #FFFFFF;
             --border-color: #e4e4e7; /* zinc-200 */
@@ -59,7 +59,7 @@
 
         .category-link.active {
             color: var(--primary-color);
-            background-color: rgba(196, 85, 8, 0.05);
+            background-color: rgba(255, 45, 85, 0.05);
             border-bottom: 2px solid var(--primary-color);
         }
 
@@ -83,7 +83,7 @@
         
         .option-btn.selected {
             border-color: var(--primary-color);
-            background-color: rgba(196, 85, 8, 0.05);
+            background-color: rgba(255, 45, 85, 0.05);
             color: var(--primary-color) !important;
             font-weight: 900;
         }
@@ -140,7 +140,7 @@
         .animate-fade-out { animation: fadeOut 0.3s ease-in forwards; }
     </style>
 </head>
-<body class="selection:bg-[#C45508]/10 overflow-x-hidden">
+<body class="selection:bg-[#FF2D55]/10 overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-[70] glass-nav border-b border-zinc-200 safe-pt">
@@ -187,7 +187,7 @@
         </div>
         <div id="wishlist-items" class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar"></div>
         <div class="p-6 border-t border-zinc-100 bg-white safe-pb">
-            <button id="wishlist-clear" class="w-full py-4 text-[9px] uppercase tracking-[0.3em] font-bold border border-zinc-200 hover:border-[#C45508] hover:text-[#C45508] transition rounded-none text-zinc-600">Limpar Carrinho</button>
+            <button id="wishlist-clear" class="w-full py-4 text-[9px] uppercase tracking-[0.3em] font-bold border border-zinc-200 hover:border-[#FF2D55] hover:text-[#FF2D55] transition rounded-none text-zinc-600">Limpar Carrinho</button>
         </div>
     </div>
 
@@ -250,19 +250,19 @@
                 
                 <div class="flex-grow">
                     <div class="mb-2 md:mb-3">
-                        <span id="modal-product-tag" class="text-[6px] md:text-[7px] uppercase tracking-[0.3em] font-black text-[#C45508] mb-0.5 inline-block"></span>
+                        <span id="modal-product-tag" class="text-[6px] md:text-[7px] uppercase tracking-[0.3em] font-black text-[#FF2D55] mb-0.5 inline-block"></span>
                         <h2 id="modal-product-name" class="text-base md:text-lg font-serif italic text-zinc-900 leading-tight"></h2>
                         <p id="modal-product-price" class="text-black text-xs md:text-sm font-serif mt-0.5"></p>
                     </div>
                     
                     <div class="space-y-2 md:space-y-4">
                         <div>
-                            <h4 class="text-[6px] md:text-[7px] uppercase tracking-widest font-black text-black mb-1">TAMANHO</h4>
+                            <h4 class="text-[6px] md:text-[7px] uppercase tracking-widest font-black text-black mb-1">ESCOLHER O TAMANHO</h4>
                             <div id="size-options" class="flex flex-wrap gap-1"></div>
                         </div>
                         
                         <div>
-                            <h4 class="text-[6px] md:text-[7px] uppercase tracking-widest font-black text-black mb-1">COR</h4>
+                            <h4 class="text-[6px] md:text-[7px] uppercase tracking-widest font-black text-black mb-1">ESCOLHER A COR</h4>
                             <div id="color-options" class="flex flex-wrap gap-1"></div>
                         </div>
                     </div>
@@ -270,7 +270,7 @@
                 
                 <!-- Ações -->
                 <div class="mt-3 md:mt-4 pt-3 border-t border-zinc-200 safe-pb">
-                    <button id="modal-order-btn" class="w-full bg-black text-white py-2 md:py-2.5 text-[7px] md:text-[8px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-colors rounded-none">Confirmar Encomenda</button>
+                    <button id="modal-order-btn" class="w-full bg-white text-black border border-black py-2 md:py-2.5 text-[7px] md:text-[8px] font-black uppercase tracking-widest transition-colors rounded-none">Confirmar Encomenda</button>
                     <button id="modal-wishlist-btn" class="w-full text-zinc-400 py-1.5 md:py-2 text-[6px] md:text-[7px] font-black uppercase tracking-widest hover:text-black transition-colors mt-0.5 text-center">Adicionar à Wishlist</button>
                 </div>
             </div>
@@ -287,7 +287,7 @@
     </footer>
 
     <!-- WhatsApp -->
-    <a href="https://wa.me/258842321241" target="_blank" class="fixed bottom-6 right-6 z-[100] w-14 h-14 bg-black text-white flex items-center justify-center shadow-2xl border border-black hover:bg-zinc-800 transition-all rounded-full">
+    <a href="https://wa.me/258842321241?text=Olá Sinha Authentic! Vi o vosso site e gostaria de encomendar um artigo." target="_blank" class="fixed bottom-6 right-6 z-[100] w-14 h-14 bg-black text-white flex items-center justify-center shadow-2xl border border-black hover:bg-zinc-800 transition-all rounded-full">
         <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
     </a>
 
@@ -309,7 +309,7 @@
         const modalContent = document.getElementById('product-modal-content');
         const menuOverlay = document.getElementById('mobile-menu');
 
-        const CHECK_ICON_HTML = `<svg class="check-icon w-2 h-2 md:w-2.5 md:h-2.5 text-[#C45508]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>`;
+        const CHECK_ICON_HTML = `<svg class="check-icon w-2 h-2 md:w-2.5 md:h-2.5 text-[#FF2D55]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>`;
 
         // Fechar ao clicar fora
         modalContainer.onclick = (e) => {
@@ -362,11 +362,13 @@
         window.selectSize = function(s) { 
             selectedSize = s; 
             document.querySelectorAll('#size-options button').forEach(b => b.classList.toggle('selected', b.dataset.size === s)); 
+            updateModalBtn();
         };
         
         window.selectColor = function(c) { 
             selectedColor = c; 
             document.querySelectorAll('#color-options button').forEach(b => b.classList.toggle('selected', b.dataset.color === c)); 
+            updateModalBtn();
         };
 
         window.toggleWishlist = function(id) {
@@ -401,6 +403,17 @@
         function updateModalBtn() {
             const isSaved = wishlist.includes(selectedProduct?.id);
             document.getElementById('modal-wishlist-btn').innerText = isSaved ? 'Remover da Wishlist' : 'Adicionar à Wishlist';
+            
+            const orderBtn = document.getElementById('modal-order-btn');
+            if (selectedSize && selectedColor) {
+                // Estado Ativo (Tom da Marca)
+                orderBtn.classList.remove('bg-white', 'text-black', 'border', 'border-black');
+                orderBtn.classList.add('bg-[#FF2D55]', 'text-white', 'hover:bg-[#D81B4B]', 'border-none');
+            } else {
+                // Estado Inativo (Branco com borda preta)
+                orderBtn.classList.add('bg-white', 'text-black', 'border', 'border-black');
+                orderBtn.classList.remove('bg-[#FF2D55]', 'text-white', 'hover:bg-[#D81B4B]', 'border-none');
+            }
         }
 
         function render() {
