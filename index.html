@@ -225,7 +225,11 @@
                 <h2 id="current-category-name" class="text-2xl md:text-4xl font-serif italic text-zinc-900 capitalize">Peças em Destaque</h2>
             </div>
         </div>
-        <div id="product-grid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200 border-t border-zinc-200"></div>
+        <div id="product-grid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200 border-t border-zinc-200">
+            <div class="col-span-full py-20 text-center bg-white">
+                <p class="text-zinc-400 font-serif italic animate-pulse">Carregando acervo...</p>
+            </div>
+        </div>
     </section>
 
     <!-- Modal (Compacto: Fundo Off-White e Backdrop Claro) -->
@@ -289,25 +293,9 @@
 
     <script>
         const WA_NUMBER = "258842321241";
-        const products = [
-            { id: "1", name: "Vestido Fluidez Seda", category: "vestidos", price: 12890.00, image: "https://images.unsplash.com/photo-1539109136881-3be0610cac48?q=80&w=1887", tag: "Limitada", sizes: ["P", "M", "G"], colors: ["Noir", "Champagne"] },
-            { id: "2", name: "Conjunto Minimal Linho", category: "blusas", price: 8450.00, image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920", tag: "Best Seller", sizes: ["P", "M", "G"], colors: ["Areia", "Preto"] },
-            { id: "3", name: "Blazer Estruturado Royale", category: "blusas", price: 14200.00, image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?q=80&w=1886", tag: "Atelier", sizes: ["P", "M", "G"], colors: ["Marinho", "Preto"] },
-            { id: "4", name: "Mule Minimal Noir", category: "calcados", price: 5900.00, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1780", tag: "Essencial", sizes: ["36", "37", "38", "39"], colors: ["Noir"] },
-            { id: "5", name: "Trench Coat Cashmere", category: "casacos", price: 21500.00, image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=1887", tag: "Exclusivo", sizes: ["M", "G"], colors: ["Preto", "Camelo"] },
-            { id: "6", name: "Clutch Couro Artesanal", category: "acessorios", price: 11000.00, image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2069", tag: "Handmade", sizes: ["Único"], colors: ["Ebony"] },
-            { id: "7", name: "Vestido Midi Plissado", category: "vestidos", price: 9800.00, image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1887", tag: "Novo", sizes: ["P", "M"], colors: ["Verde Olive", "Bege"] },
-            { id: "8", name: "Calça Pantalona Alfaiataria", category: "blusas", price: 7200.00, image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=1887", tag: "Essential", sizes: ["38", "40", "42"], colors: ["Branco", "Preto"] },
-            { id: "9", name: "Scarpin Couro Envernizado", category: "calcados", price: 8900.00, image: "https://images.unsplash.com/photo-1535043834128-f0b29d06bcda?q=80&w=1887", tag: "Luxury", sizes: ["35", "36", "37", "38"], colors: ["Nude", "Preto"] },
-            { id: "10", name: "Cinto Bijoux Gold", category: "acessorios", price: 3400.00, image: "https://images.unsplash.com/photo-1624222247344-550fb80533dc?q=80&w=1887", tag: "Lançamento", sizes: ["Único"], colors: ["Dourado"] },
-            { id: "11", name: "Jaqueta Couro Premium", category: "casacos", price: 18500.00, image: "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?q=80&w=1887", tag: "Winter", sizes: ["P", "M", "G"], colors: ["Preto", "Bordô"] },
-            { id: "12", name: "Vestido Noite Velvet", category: "vestidos", price: 15400.00, image: "https://images.unsplash.com/photo-1494578379644-96c31823743e?q=80&w=1887", tag: "Noir Luxe", sizes: ["P", "M"], colors: ["Marinho", "Esmeralda"] },
-            { id: "13", name: "Óculos Dark Elegance", category: "acessorios", price: 6500.00, image: "https://images.unsplash.com/photo-1511499767390-90342f4b4ce7?q=80&w=1887", tag: "Premium", sizes: ["Normal"], colors: ["Preto"] },
-            { id: "14", name: "Sandália Minimal Tiras", category: "calcados", price: 4800.00, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1887", tag: "Verão", sizes: ["36", "37", "38"], colors: ["Ouro", "Prata"] },
-            { id: "15", name: "Suéter Cashmere Soft", category: "casacos", price: 12200.00, image: "https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=1887", tag: "Conforto", sizes: ["M", "G"], colors: ["Creme", "Cinza"] },
-            { id: "16", name: "Body Renda Intimate", category: "blusas", price: 5600.00, image: "https://images.unsplash.com/photo-1582142306909-195724d33927?q=80&w=1920", tag: "Private", sizes: ["P", "M"], colors: ["Preto", "Branco"] }
-        ];
-
+        const API_URL = "https://api.sheetbest.com/sheets/61940a5d-eed3-47f7-8b09-deb125287477";
+        
+        let products = [];
         let currentCategory = 'todos';
         let minPrice = 0;
         let maxPrice = Infinity;
@@ -469,5 +457,29 @@
             updateModalBtn(); 
         };
 
-        updateUI(); render();
-    </script
+        async function fetchProducts() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                products = data.map(item => ({
+                    id: String(item.ID || ''),
+                    name: item.Name || '',
+                    category: item.category || '',
+                    price: parseFloat(String(item.Price).replace(/[^0-9.]/g, '')) || 0,
+                    image: item.Image || '',
+                    tag: item.Tag || '',
+                    sizes: item.size ? String(item.size).split(',').map(s => s.trim()) : [],
+                    colors: item.color ? String(item.color).split(',').map(c => c.trim()) : []
+                }));
+                render();
+                updateUI();
+            } catch (error) {
+                console.error("Erro ao carregar produtos:", error);
+                document.getElementById('product-grid').innerHTML = '<div class="col-span-full py-20 text-center bg-white"><p class="text-red-400 font-serif italic">Erro ao carregar produtos. Por favor, tente novamente.</p></div>';
+            }
+        }
+
+        fetchProducts();
+    </script>
+</body>
+</html>
