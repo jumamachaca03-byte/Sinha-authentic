@@ -14,9 +14,9 @@
             scrollbar-gutter: stable;
         }
         :root {
-            --primary-color: #FF2D55;
+            --primary-color: #000000;
             --secondary-color: #FADADD;
-            --primary-dark: #D81B4B;
+            --primary-dark: #18181b;
             --bg-main: #FAF9F6; /* Off-white luxuoso */
             --bg-surface: #FFFFFF;
             --border-color: #e4e4e7; /* zinc-200 */
@@ -59,7 +59,7 @@
 
         .category-link.active {
             color: var(--primary-color);
-            background-color: rgba(255, 45, 85, 0.05);
+            background-color: rgba(0, 0, 0, 0.05);
             border-bottom: 2px solid var(--primary-color);
         }
 
@@ -83,7 +83,7 @@
         
         .option-btn.selected {
             border-color: var(--primary-color);
-            background-color: rgba(255, 45, 85, 0.05);
+            background-color: rgba(0, 0, 0, 0.05);
             color: var(--primary-color) !important;
             font-weight: 900;
         }
@@ -136,11 +136,19 @@
             will-change: transform, opacity;
             transform-origin: center;
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-card {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
         .animate-fade-out { animation: fadeOut 0.3s ease-in forwards; }
     </style>
 </head>
-<body class="selection:bg-[#FF2D55]/10 overflow-x-hidden">
+<body class="selection:bg-black selection:text-white overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-[70] glass-nav border-b border-zinc-200 safe-pt">
@@ -187,7 +195,7 @@
         </div>
         <div id="wishlist-items" class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar"></div>
         <div class="p-6 border-t border-zinc-100 bg-white safe-pb">
-            <button id="wishlist-clear" class="w-full py-4 text-[9px] uppercase tracking-[0.3em] font-bold border border-zinc-200 hover:border-[#FF2D55] hover:text-[#FF2D55] transition rounded-none text-zinc-600">Limpar Carrinho</button>
+            <button id="wishlist-clear" class="w-full py-4 text-[9px] uppercase tracking-[0.3em] font-bold border border-zinc-200 hover:border-black hover:text-black transition rounded-none text-zinc-600">Limpar Carrinho</button>
         </div>
     </div>
 
@@ -250,7 +258,7 @@
                 
                 <div class="flex-grow">
                     <div class="mb-2 md:mb-3">
-                        <span id="modal-product-tag" class="text-[6px] md:text-[7px] uppercase tracking-[0.3em] font-black text-[#FF2D55] mb-0.5 inline-block"></span>
+                        <span id="modal-product-tag" class="text-[6px] md:text-[7px] uppercase tracking-[0.3em] font-black text-black mb-0.5 inline-block"></span>
                         <h2 id="modal-product-name" class="text-base md:text-lg font-serif italic text-zinc-900 leading-tight"></h2>
                         <p id="modal-product-price" class="text-black text-xs md:text-sm font-serif mt-0.5"></p>
                     </div>
@@ -309,7 +317,7 @@
         const modalContent = document.getElementById('product-modal-content');
         const menuOverlay = document.getElementById('mobile-menu');
 
-        const CHECK_ICON_HTML = `<svg class="check-icon w-2 h-2 md:w-2.5 md:h-2.5 text-[#FF2D55]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>`;
+        const CHECK_ICON_HTML = `<svg class="check-icon w-2 h-2 md:w-2.5 md:h-2.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>`;
 
         // Fechar ao clicar fora
         modalContainer.onclick = (e) => {
@@ -406,21 +414,21 @@
             
             const orderBtn = document.getElementById('modal-order-btn');
             if (selectedSize && selectedColor) {
-                // Estado Ativo (Tom da Marca)
+                // Estado Ativo (Preto)
                 orderBtn.classList.remove('bg-white', 'text-black', 'border', 'border-black');
-                orderBtn.classList.add('bg-[#FF2D55]', 'text-white', 'hover:bg-[#D81B4B]', 'border-none');
+                orderBtn.classList.add('bg-black', 'text-white', 'hover:bg-zinc-800', 'border-none');
             } else {
                 // Estado Inativo (Branco com borda preta)
                 orderBtn.classList.add('bg-white', 'text-black', 'border', 'border-black');
-                orderBtn.classList.remove('bg-[#FF2D55]', 'text-white', 'hover:bg-[#D81B4B]', 'border-none');
+                orderBtn.classList.remove('bg-black', 'text-white', 'hover:bg-zinc-800', 'border-none');
             }
         }
 
         function render() {
             let filtered = currentCategory === 'todos' ? products : products.filter(p => p.category === currentCategory);
 
-            grid.innerHTML = filtered.map(p => `
-                <div class="group bg-white p-3 md:p-5 border-r border-b border-zinc-200">
+            grid.innerHTML = filtered.map((p, index) => `
+                <div class="group bg-white p-3 md:p-5 border-r border-b border-zinc-200 animate-card opacity-0" style="animation-delay: ${index * 0.05}s">
                     <div class="relative aspect-[3/4] mb-3 bg-zinc-50 border border-zinc-100 cursor-pointer overflow-hidden" onclick="window.openProductModal('${p.id}')">
                         <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <button onclick="event.stopPropagation(); window.toggleWishlist('${p.id}')" class="absolute top-2 right-2 p-1.5 bg-white/80 text-black border border-zinc-100 rounded-none shadow-sm">
