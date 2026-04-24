@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>Sinha Authentic | Luxury Fashion</title>
+    <title>SINHA AUTHENTIC</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👗</text></svg>">
     <style>
         html {
@@ -137,11 +137,11 @@
             transform-origin: center;
         }
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-card {
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
@@ -156,6 +156,19 @@
             <div class="text-sm md:text-lg font-bold tracking-[0.2em] uppercase font-serif text-zinc-900">Sinha <span class="text-black italic">Authentic</span></div>
             
             <div class="flex items-center space-x-2 md:space-x-4">
+                <!-- Dropdown Informações (Desktop) -->
+                <div class="relative group hidden md:block">
+                    <button class="text-[8px] tracking-[0.3em] font-black uppercase text-zinc-900 px-4 py-2 hover:bg-zinc-50 transition-colors flex items-center">
+                        Informações
+                        <svg class="w-1.5 h-1.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="absolute right-0 top-full mt-0 w-48 bg-white border border-zinc-100 shadow-2xl hidden group-hover:block z-[100]">
+                        <a href="#" class="block px-6 py-4 text-[7px] tracking-[0.2em] font-black uppercase text-zinc-500 hover:bg-zinc-50 hover:text-black border-b border-zinc-50 transition-colors">Sobre Nós</a>
+                        <a href="#" class="block px-6 py-4 text-[7px] tracking-[0.2em] font-black uppercase text-zinc-500 hover:bg-zinc-50 hover:text-black border-b border-zinc-50 transition-colors">Perguntas Frequentes</a>
+                        <a href="#" class="block px-6 py-4 text-[7px] tracking-[0.2em] font-black uppercase text-zinc-500 hover:bg-zinc-50 hover:text-black transition-colors">Privacidade</a>
+                    </div>
+                </div>
+
                 <button id="wishlist-toggle-btn" class="relative p-2 hover:bg-zinc-100 transition border border-zinc-200">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -174,6 +187,11 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="mobile-menu-overlay fixed inset-0 z-[65] hidden flex-col items-center justify-center space-y-6">
+        <div class="flex flex-col items-center space-y-4 mb-8 pb-8 border-b border-zinc-100 w-[80%]">
+            <a href="#" class="text-[10px] tracking-[0.3em] font-black uppercase text-zinc-400">Sobre Nós</a>
+            <a href="#" class="text-[10px] tracking-[0.3em] font-black uppercase text-zinc-400">FAQ</a>
+            <a href="#" class="text-[10px] tracking-[0.3em] font-black uppercase text-zinc-400">Privacidade</a>
+        </div>
         <button data-filter="todos" class="mobile-filter-btn text-2xl font-serif tracking-widest uppercase italic text-zinc-900">Todas as Peças</button>
         <button data-filter="vestidos" class="mobile-filter-btn text-2xl font-serif tracking-widest uppercase italic text-zinc-900">Vestidos</button>
         <button data-filter="casacos" class="mobile-filter-btn text-2xl font-serif tracking-widest uppercase italic text-zinc-900">Casacos</button>
@@ -233,10 +251,14 @@
                 <h2 id="current-category-name" class="text-2xl md:text-4xl font-serif italic text-zinc-900 capitalize">Peças em Destaque</h2>
             </div>
         </div>
-        <div id="product-grid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200 border-t border-zinc-200">
+        <div id="product-grid" class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-zinc-200 border-t border-zinc-200">
             <div class="col-span-full py-20 text-center bg-white">
                 <p class="text-zinc-400 font-serif italic animate-pulse">Carregando acervo...</p>
             </div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination-container" class="max-w-6xl mx-auto py-12 flex items-center justify-center space-x-1 border-t border-zinc-100 bg-white hidden">
         </div>
     </section>
 
@@ -289,7 +311,8 @@
     <footer class="bg-white py-12 border-t border-zinc-100 text-center">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
             <div class="text-lg font-bold tracking-widest uppercase text-zinc-900 font-serif mb-3">Sinha <span class="text-black italic">Authentic</span></div>
-            <p class="max-w-xs text-[9px] text-zinc-500 leading-relaxed font-light mb-6">A sofisticação feminina em Moçambique. Atendimento sob encomenda.</p>
+            <p class="max-w-xs text-[9px] text-zinc-500 leading-relaxed font-light mb-12">A sofisticação feminina em Moçambique. Atendimento sob encomenda.</p>
+
             <div class="text-[7px] tracking-widest uppercase font-black text-zinc-300">© 2026 SINHA AUTHENTIC.</div>
         </div>
     </footer>
@@ -305,8 +328,8 @@
         
         let products = [];
         let currentCategory = 'todos';
-        let minPrice = 0;
-        let maxPrice = Infinity;
+        let currentPage = 1;
+        const itemsPerPage = 10;
         let wishlist = JSON.parse(localStorage.getItem('sinha_wishlist') || '[]');
         let selectedProduct = null;
         let selectedSize = '';
@@ -427,9 +450,19 @@
 
         function render() {
             let filtered = currentCategory === 'todos' ? products : products.filter(p => p.category === currentCategory);
+            
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginated = filtered.slice(start, start + itemsPerPage);
 
-            grid.innerHTML = filtered.map((p, index) => `
-                <div class="group bg-white p-3 md:p-5 border-r border-b border-zinc-200 animate-card opacity-0" style="animation-delay: ${index * 0.05}s">
+            if (paginated.length === 0 && products.length > 0) {
+                grid.innerHTML = '<div class="col-span-full py-20 text-center bg-white"><p class="text-zinc-400 font-serif italic">Nenhum produto encontrado nesta categoria.</p></div>';
+                document.getElementById('pagination-container').classList.add('hidden');
+                return;
+            }
+
+            grid.innerHTML = paginated.map((p, index) => `
+                <div class="group bg-white p-3 md:p-5 border-r border-b border-zinc-200 animate-card opacity-0" style="animation-delay: ${index * 0.1}s">
                     <div class="relative aspect-[3/4] mb-3 bg-zinc-50 border border-zinc-100 cursor-pointer overflow-hidden" onclick="window.openProductModal('${p.id}')">
                         <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <button onclick="event.stopPropagation(); window.toggleWishlist('${p.id}')" class="absolute top-2 right-2 p-1.5 bg-white/80 text-black border border-zinc-100 rounded-none shadow-sm">
@@ -443,6 +476,54 @@
                     </div>
                 </div>
             `).join('');
+
+            // Update Pagination
+            const paginationContainer = document.getElementById('pagination-container');
+            if (totalPages <= 1) {
+                paginationContainer.classList.add('hidden');
+            } else {
+                paginationContainer.classList.remove('hidden');
+                let html = '';
+                
+                // Numeric Buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    // Show current, and adjacent numbers
+                    if (i === currentPage) {
+                        html += `<span class="w-8 h-8 rounded-full bg-zinc-50 text-zinc-400 font-black text-[10px] flex items-center justify-center border border-zinc-200">${i}</span>`;
+                    } else if (i === currentPage - 1 || i === currentPage + 1) {
+                        html += `<button onclick="window.goToPage(${i})" class="w-8 h-8 flex items-center justify-center text-[10px] font-black text-black hover:bg-zinc-50 transition-colors border border-zinc-200 rounded-full">${i}</button>`;
+                    }
+                }
+
+                paginationContainer.innerHTML = html;
+            }
+        }
+
+        window.goToPage = (page) => {
+            currentPage = page;
+            render();
+            scrollToProducts();
+        };
+
+        window.prevPage = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                render();
+                scrollToProducts();
+            }
+        };
+
+        window.nextPage = () => {
+            currentPage++;
+            render();
+            scrollToProducts();
+        };
+
+        function scrollToProducts() {
+            const headerOffset = 100;
+            const elementPosition = document.getElementById('produtos').getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
 
         document.getElementById('menu-toggle').onclick = () => {
@@ -455,10 +536,11 @@
 
         function setCat(c) {
             currentCategory = c;
+            currentPage = 1; // Reset pagination
             document.querySelectorAll('.category-link').forEach(b => b.classList.toggle('active', b.dataset.cat === c));
             document.getElementById('current-category-name').innerText = c === 'todos' ? 'Peças em Destaque' : c;
             render();
-            document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
+            scrollToProducts();
         }
 
         document.getElementById('wishlist-toggle-btn').onclick = () => { document.getElementById('wishlist-drawer').classList.add('active'); document.getElementById('wishlist-overlay').classList.remove('hidden'); };
