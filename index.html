@@ -193,9 +193,10 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            gap: 1px;
+            gap: 0;
             background-color: var(--border-color);
             padding: 0;
+            border-left: 1px solid var(--border-color);
             scrollbar-width: none;
         }
         .product-row-container::-webkit-scrollbar { display: none; }
@@ -537,7 +538,7 @@
         };
 
         function createProductCard(p, showDetails = true, isRowItem = false) {
-            const itemClass = isRowItem ? 'product-row-item p-3 md:p-5' : 'group bg-white p-3 md:p-5 border-r border-b border-zinc-200';
+            const itemClass = isRowItem ? 'product-row-item p-2 md:p-4 border-r border-zinc-200' : 'group bg-white p-3 md:p-5 border-r border-b border-zinc-200';
             const detailsBtn = showDetails ? `
                 <button onclick="window.openProductModal('${p.id}')" class="details-btn w-full bg-white text-black border border-zinc-200 py-2.5 sm:py-2 text-[8px] sm:text-[7px] font-black uppercase tracking-[0.2em] mt-2 rounded-none flex items-center justify-center">
                     <span>Ver Detalhes</span>
@@ -582,10 +583,8 @@
                     const catProducts = products.filter(p => p.category.toLowerCase().trim() === cat);
                     if (catProducts.length === 0) return;
 
-                    const previewProducts = catProducts.slice(0, 3);
-
                     html += `
-                        <div class="mb-14 last:mb-0 max-w-7xl mx-auto w-full overflow-hidden px-4">
+                        <div class="mb-8 last:mb-0 max-w-7xl mx-auto w-full overflow-hidden px-4">
                             <div class="mb-5 border-b border-zinc-100 pb-3 text-left">
                                 <span class="uppercase tracking-[0.4em] text-[7px] text-zinc-300 font-bold mb-1 block">Coleção</span>
                                 <h3 class="text-2xl md:text-3xl font-serif italic text-zinc-900 capitalize">${cat}</h3>
@@ -600,14 +599,14 @@
                                 </button>
                                 
                                 <div id="row-${cat}" class="product-row-container border-y border-zinc-200">
-                                    ${previewProducts.map(p => createProductCard(p, false, true)).join('')}
+                                    ${catProducts.map(p => createProductCard(p, false, true)).join('')}
                                     
-                                    <div class="product-row-item flex flex-col items-center justify-center bg-zinc-50/50 border-r border-zinc-200 cursor-pointer hover:bg-zinc-100 transition-colors group/ver-tudo" onclick="setCat('${cat}')">
-                                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-full border border-zinc-300 flex items-center justify-center mb-4 group-hover/ver-tudo:bg-black group-hover/ver-tudo:text-white transition-all transform group-hover/ver-tudo:scale-110">
-                                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                                    <div class="product-row-item flex flex-col items-center justify-center bg-zinc-50/30 border-r border-zinc-200 cursor-pointer hover:bg-zinc-100/50 transition-colors group/ver-tudo" style="min-width: 160px;" onclick="setCat('${cat}')">
+                                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-zinc-200 flex items-center justify-center mb-3 group-hover/ver-tudo:border-zinc-900 transition-all">
+                                            <svg class="w-4 h-4 md:w-5 md:h-5 text-zinc-400 group-hover/ver-tudo:text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                         </div>
-                                        <span class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-zinc-900">Ver Tudo</span>
-                                        <span class="text-[7px] md:text-[8px] text-zinc-400 uppercase tracking-widest mt-1">${catProducts.length} Artigos</span>
+                                        <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-400 group-hover/ver-tudo:text-zinc-900 transition-colors">Ver Tudo</span>
+                                        <span class="text-[6px] md:text-[7px] text-zinc-300 uppercase tracking-widest mt-1">${catProducts.length} Artigos</span>
                                     </div>
                                 </div>
                             </div>
