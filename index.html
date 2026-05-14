@@ -549,7 +549,7 @@
         };
 
         function createProductCard(p, showDetails = true, isRowItem = false, showWishlist = true) {
-            const itemClass = isRowItem ? 'product-row-item p-2 md:p-4 border-r border-zinc-200' : 'group bg-white p-3 md:p-5 border-r border-b border-zinc-200';
+            const itemClass = isRowItem ? 'product-row-item group p-2 md:p-4 border-r border-zinc-200 md:hover:bg-zinc-50/50 transition-colors' : 'group bg-white p-3 md:p-5 border-r border-b border-zinc-200';
             const detailsBtn = showDetails ? `
                 <button onclick="window.openProductModal('${p.id}')" class="details-btn w-full text-black md:text-zinc-400 py-3 text-[6px] md:text-[7px] font-black uppercase tracking-[0.4em] mt-1 md:hover:text-black transition-all flex items-center justify-center">
                     <span class="border-b border-zinc-100 md:border-transparent md:group-hover:border-black pb-1">Ver Detalhes</span>
@@ -602,7 +602,7 @@
                     html += `
                         <div class="mb-8 last:mb-0 max-w-7xl mx-auto w-full overflow-hidden px-4">
                             <div class="mb-4 border-b border-zinc-100 pb-3 text-left">
-                                <span class="uppercase tracking-[0.4em] text-[7px] text-zinc-300 font-bold mb-1 block">Coleção</span>
+                                <span class="uppercase tracking-[0.4em] text-[7px] text-zinc-400 font-bold mb-1 block">Coleção</span>
                                 <h3 class="text-2xl md:text-3xl font-serif italic text-zinc-900 capitalize">${cat}</h3>
                             </div>
                             
@@ -610,12 +610,12 @@
                                 <div id="row-${cat}" class="product-row-container border-y border-zinc-200">
                                     ${previewProducts.map(p => createProductCard(p, false, true, false)).join('')}
                                     
-                                    <div class="product-row-item flex flex-col items-center justify-center bg-white border-r border-zinc-200 cursor-pointer hover:bg-zinc-50/50 transition-colors group/ver-tudo" onclick="setCat('${cat}')">
+                                    <div class="product-row-item flex flex-col items-center justify-center bg-white border-r border-zinc-200 cursor-pointer md:hover:bg-zinc-50 transition-all group/ver-tudo" onclick="setCat('${cat}')">
                                         <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-4">
-                                            <div class="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black flex items-center justify-center mb-2 transition-all">
-                                                <svg class="w-4 h-4 md:w-5 md:h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
+                                            <div class="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black flex items-center justify-center mb-2 md:group-hover/ver-tudo:bg-black md:group-hover/ver-tudo:text-white transition-all">
+                                                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
                                             </div>
-                                            <span class="text-[7.5px] md:text-[8.5px] font-bold uppercase tracking-[0.2em] text-black transition-colors mb-1">Ver Tudo</span>
+                                            <span class="text-[7.5px] md:text-[8.5px] font-bold uppercase tracking-[0.2em] text-black mb-1 md:group-hover/ver-tudo:tracking-[0.3em] transition-all">Ver Tudo</span>
                                             <span class="text-[5.5px] md:text-[6.5px] text-zinc-400 uppercase tracking-widest">${catProducts.length} Artigos</span>
                                         </div>
                                     </div>
